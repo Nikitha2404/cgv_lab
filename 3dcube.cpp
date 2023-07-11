@@ -16,7 +16,7 @@ void myinit()
 }
 void idlefunc()
 {
-    theta[flag]+=0.01;
+    theta[flag]+=0.5;
     if (theta[flag] > 360)theta[flag] = 0;
     glutPostRedisplay();
 }
@@ -32,13 +32,9 @@ void mousefunc(int button, int status, int x, int y)
 void drawpoly(int a, int b, int c, int d)
 {
     glBegin(GL_POLYGON);
-    // glColor3fv(p[a]);
     glVertex3fv(v[a]);
-    // glColor3fv(p[b]);
     glVertex3fv(v[b]);
-    // glColor3fv(p[c]);
     glVertex3fv(v[c]);
-    // glColor3fv(p[d]);
     glVertex3fv(v[d]);
     glEnd();
 }

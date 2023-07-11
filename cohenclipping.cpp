@@ -1,4 +1,3 @@
-#include <windows.h>
 #include<GL/glut.h>
 #include<math.h>
 #include<stdio.h>
@@ -18,7 +17,9 @@ void init(void)
 
     glClearColor(0.0, 0, 0, 0);
     glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     gluOrtho2D(-300, 300, -300, 300);
+    glMatrixMode(GL_MODELVIEW);
 
 }
 
@@ -58,24 +59,21 @@ void cohen_Line(float x1, float y1, float x2, float y2)
             y = ymax;
             x = xi + 1.0 / m * (ymax - yi);
         }
-        else
-            if ((c & 4) > 0)
-            {
-                y = ymin;
-                x = xi + 1.0 / m * (ymin - yi);
-            }
-            else
-                if ((c & 2) > 0)
-                {
-                    x = xmax;
-                    y = yi + m * (xmax - xi);
-                }
-                else
-                    if ((c & 1) > 0)
-                    {
-                        x = xmin;
-                        y = yi + m * (xmin - xi);
-                    }
+        else if ((c & 4) > 0)
+        {
+            y = ymin;
+            x = xi + 1.0 / m * (ymin - yi);
+        }
+        else if ((c & 2) > 0)
+        {
+            x = xmax;
+            y = yi + m * (xmax - xi);
+        }
+        else if ((c & 1) > 0)
+        {
+            x = xmin;
+            y = yi + m * (xmin - xi);
+        }
 
         if (c == c1)
         {

@@ -1,7 +1,5 @@
 //Teapot
-#include<stdlib.h>
-#include<stdio.h>
-#include<conio.h>
+#include<iostream>
 #include<math.h>
 #include<GL/glut.h>
 void myinit()
@@ -92,8 +90,9 @@ void display()
 	drawtable();
 	glFlush();
 }
-void main()
+int main(int argc, char** argv)
 {
+	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(100, 100);

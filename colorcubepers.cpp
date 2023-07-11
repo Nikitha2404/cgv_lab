@@ -5,16 +5,17 @@ void polygon(int a, int b, int c, int d);
 void polygon1();
 void display()
 {
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	gluLookAt(v1[0], v1[1], v1[2], 0, 0, 0, 0, 1, 0);
 	polygon1();
 	glFlush();
 }
-void init()
-{
-	glClearColor(0.0, 0.0, 0.0, 1.0);
-}
+// void init()
+// {
+// 	glClearColor(0.0, 0.0, 0.0, 1.0);
+// }
 void polygon1()
 {
 	polygon(0, 1, 2, 3);
@@ -58,13 +59,14 @@ void Reshape(int w, int h)
 		glFrustum(-2.0, 2.0, -2.0 * w / h, 2.0 * w / h, 2.0, 20);
 	glMatrixMode(GL_MODELVIEW);
 }
-void main()
+int main(int argc, char* argv[])
 {
+	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_DEPTH);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(10, 10);
 	glutCreateWindow("CUBE");
-	init();
+	// init();
 	glutDisplayFunc(display);
 	glutKeyboardFunc(key);
 	glEnable(GL_DEPTH_TEST);

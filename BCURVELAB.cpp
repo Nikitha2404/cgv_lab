@@ -7,7 +7,7 @@
 GLsizei winWidth = 600, winHeight = 600;
 GLfloat xwcMin = 0.0, xwcMax = 130.0;
 GLfloat ywcMin = 0.0, ywcMax = 130.0;
-typedef struct wcPt3D
+struct wcPt3D
 {
 	GLfloat x, y, z;
 };
@@ -104,7 +104,7 @@ void d_menu(int op)
 		exit(0);
 	glutPostRedisplay();
 }
-void main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
