@@ -4,7 +4,7 @@ int c;
 float v[4][3] = { {0,0,1},{-1,-0.5,0},{0,1,0},{1,-0.5,0} };
 void myinit()
 {
-	glMatrixMode(GL_PROJECTION_MATRIX);
+	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-2, 2, -2, 2, -2, 2);
 	glMatrixMode(GL_MODELVIEW);
