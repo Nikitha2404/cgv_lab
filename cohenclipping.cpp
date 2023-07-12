@@ -33,11 +33,11 @@ int code(float x, float y)
     return c;
 }
 
-void cohen_Line(float x1, float y1, float x2, float y2)
+void cohen_Line()
 {
-    int c1 = code(x1, y1);
-    int c2 = code(x2, y2);
-    float m = (y2 - y1) / (x2 - x1);
+    int c1 = code(xd1, yd1);
+    int c2 = code(xd2, yd2);
+    float m = (yd2 - yd1) / (xd2 - xd1);
     while ((c1 | c2) > 0)
     {
         if ((c1 & c2) > 0)
@@ -45,34 +45,34 @@ void cohen_Line(float x1, float y1, float x2, float y2)
             exit(0);
         }
 
-        float xi = x1; float yi = y1;
+        float xi = xd1; float yi = yd1;
         int c = c1;
         if (c == 0)
         {
             c = c2;
-            xi = x2;
-            yi = y2;
+            xi = xd2;
+            yi = yd2;
         }
         float x, y;
         if ((c & 8) > 0)
         {
             y = ymax;
-            x = xi + 1.0 / m * (ymax - yi);
+            x = xi + 1.0 / m * (y - yi);
         }
         else if ((c & 4) > 0)
         {
             y = ymin;
-            x = xi + 1.0 / m * (ymin - yi);
+            x = xi + 1.0 / m * (y- yi);
         }
         else if ((c & 2) > 0)
         {
             x = xmax;
-            y = yi + m * (xmax - xi);
+            y = yi + m * (x - xi);
         }
         else if ((c & 1) > 0)
         {
             x = xmin;
-            y = yi + m * (xmin - xi);
+            y = yi + m * (x - xi);
         }
 
         if (c == c1)
@@ -99,7 +99,7 @@ void mykey(unsigned char key, int x, int y)
     if (key == 'c')
     {
         cout << "Hello";
-        cohen_Line(xd1, yd1, xd2, yd2);
+        cohen_Line();
         glFlush();
     }
 }
